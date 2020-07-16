@@ -7,12 +7,20 @@ entre eles (desconsiderando o flag).
 """
 
 
-
-
-
-
 def main():
-    pass
+    try:
+        leitura = int(input('Digite um numero inteiro: '))
+        quant = 0
+        soma = 0
+        while leitura != 999:
+            quant += 1
+            soma += leitura
+            leitura = int(input('Digite um numero inteiro: '))
+
+        print(f'\nForam digitados {quant} numeros. \nA soma foi: {soma}')
+
+    except ValueError:
+        print('Dado invalido.')
 
 
 if __name__ == '__main__':

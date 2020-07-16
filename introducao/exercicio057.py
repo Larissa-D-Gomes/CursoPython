@@ -6,12 +6,13 @@ Caso esteja errado, peça a digitação novamente até ter um valor correto.
 """
 
 
-
-
-
-
 def main():
-    pass
+    leitura = input('Digite o sexo [M/F]: ')
+
+    while leitura != 'M' and leitura != 'F':
+        leitura = input('Dado invalido. Digite o sexo [M/F]: ')
+
+    print('Valor aceito.')
 
 
 if __name__ == '__main__':

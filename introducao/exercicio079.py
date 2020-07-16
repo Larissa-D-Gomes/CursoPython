@@ -8,11 +8,27 @@ valores únicos digitados, em ordem crescente.
 
 
 
-
-
-
 def main():
-    pass
+    numeros = []
+
+    try:
+        leitura = ''
+        while leitura != 'P':
+            num = int(input('Digite um numero: '))
+            if not num in numeros:
+                numeros.append(num)
+            leitura = input('Insira qualquer tecla para continuar.\n'
+                            'Digite [P/p] para para o programa: ').upper()
+
+        numeros = sorted(numeros)
+        print('Numeros ordenados: ')
+        print(numeros )
+
+    except ValueError:
+       print('Dado invalido.')
+
+
+
 
 
 if __name__ == '__main__':

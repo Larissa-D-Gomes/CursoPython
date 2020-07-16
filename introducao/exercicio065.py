@@ -6,13 +6,27 @@ todos os valores e qual foi o maior e o menor valores lidos. O programa deve per
 quer ou não continuar a digitar valores.
 """
 
-
-
-
-
-
 def main():
-    pass
+    try:
+        leitura = int(input('Digite um numero inteiro: '))
+        maior = leitura
+        menor = leitura
+        leitura = input('Se deseja parar o programa digite [P]: ')
+
+        while leitura != 'P':
+            leitura = int(input('Digite um numero inteiro: '))
+
+            if leitura > maior:
+                maior = leitura
+            elif leitura < menor:
+                menor = leitura
+
+            leitura = input('Se deseja parar o programa digite [P]: ')
+
+        print(f'\nO maior numero foi: {maior} \nO menor numero foi: {menor}')
+
+    except ValueError:
+        print('Dado invalido.')
 
 
 if __name__ == '__main__':

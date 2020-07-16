@@ -8,10 +8,20 @@ os 10 primeiros termos da progressão usando a estrutura while.
 
 
 
-
-
 def main():
-    pass
+    def main():
+        try:
+            num = float(input('Digite o primeiro termo da PA: '))
+            razao = float(input('Digite a razao da PA: '))
+            i = 0
+            while i < 10:
+                i += 1
+                print(f'[{i}] - {num}')
+                num += razao
+
+        except ValueError:
+            print('Dado invalido.')
+
 
 
 if __name__ == '__main__':

@@ -6,13 +6,17 @@ Depois disso, mostre a listagem de números gerados e também indique o menor e 
 maior valor que estão na tupla.
 """
 
-
-
-
-
+from random import randint
 
 def main():
-    pass
+    t = randint(-32767, 32767), randint(-32767, 32767), randint(-32767, 32767),\
+        randint(-32767, 32767), randint(-32767, 32767)
+
+    print('-='*50)
+    print('Numeros gerados: ')
+    print(t)
+
+    print(f'Maior: {max(t)} \nMenor: {min(t)}')
 
 
 if __name__ == '__main__':
