@@ -28,8 +28,8 @@ def main():
                 raise ValueError
             cadastro['Aposentadoria'] = cadastro['Idade'] + cadastro['Contratacao'] + \
                                         + 35 - datetime.now().year
-        for i, j in cadastro:
-            print(f'{i}: {j}')
+        for i, j in cadastro.items():
+           print(f'{i}: {j}')
 
     except ValueError:
         print('Dado invalido.')
