@@ -9,9 +9,19 @@ sucessivamente. Crie uma funcao iterativa que recebe uma string como parâmetro 
 outra contendo a entrada de forma cifrada. Neste exercício, suponha a chave de ciframento três.
 """
 
+def ciframento(frase):
+    resp = ''
+    for i in frase:
+        if 'a' <= i <= 'z' or 'A' <= i <= 'Z':
+            resp += chr(ord(i) + 3)
+        else:
+            resp += i
+    return resp
+
 
 def main():
-    pass
+    leitura = input('Digite a frase: ')
+    print('Frase cripitografada:',ciframento(leitura))
 
 
 if __name__ == '__main__':

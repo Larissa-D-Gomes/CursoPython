@@ -21,7 +21,9 @@ def get_html_page(url='http://www.savewalterwhite.com/'):
 
 def main():
     source_code = get_html_page()
-    print(source_code)
+    #print(source_code)
+
+    print(source_code[source_code.index('<h1>')+4:source_code.index('<h1>')+16])
 
 
 if __name__ == '__main__':
