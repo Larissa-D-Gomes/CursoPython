@@ -29,31 +29,53 @@ SAIDA NA TELA
 O site é https://www.imdb.com/chart/toptv
 
 """
+from serie import Serie
+from banco_de_dados import BancoDeDados
 import os
 
+
+#Funcao para separar informacao de tag
 def separador(linha):
     return linha[linha.find('>')+1: linha.rfind('<')]
 
 def leitura_arquivo():
     try:
         arq = open(os.path.join(os.getcwd(), 'series.html'), 'rt')
-        series = []
-        inicio_info = '<td class="titleColumn">'
+        inicio_info = '<td class="titleColumn">'#Tag de inicio de informacoes de serie
+        series = {}
         for i in arq:
-            if inicio_info in i:
-                arq.readline()
+            if inicio_info in i:#Ler linhas de arquivo
+                arq.readline()#Pular linha
                 nome = separador(arq.readline())
                 ano = separador(arq.readline()).replace(')','').replace('(','')
-                arq.readline()
-                arq.readline()
+                arq.readline()#Pular linha
+                arq.readline()#Pular linha
                 avaliacao = separador(arq.readline())
-                print(avaliacao)
-
+                series[nome] = Serie(nome, ano, avaliacao)
     except FileNotFoundError:
         print('ARQUIVO NAO ENCONTRADO')
+    return series
 
 def main():
-    leitura_arquivo()
+
+    series = leitura_arquivo()
+    bd = BancoDeDados()
+    bd.dados = series
+    if not bd.salvar_dados():
+        print('ERRO.')
+    else:
+        if bd.carregar_dados():
+            leitura = ''
+            while leitura != 'P':
+                n = input('Digite o nome da serie que deseja pesquisar: ')
+                aux = bd.buscar_serie(n)
+                if aux == None:
+                    print('Serie nao encontrada.')
+                else:
+                    print(aux)
+                leitura = input('Insira qualquer tecla para continuar ou [P/p] para parar: ').upper()
+        else:
+            print('ERRO!')
 
 
 
