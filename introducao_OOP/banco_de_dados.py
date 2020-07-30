@@ -31,6 +31,7 @@ class BancoDeDados:
             except EOFError as e:
                 print(str(e))
                 return False
+
     def mostrar_tudo(self):
         if not self.dados:
             print('Dados vazios!')
