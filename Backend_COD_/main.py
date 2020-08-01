@@ -7,8 +7,7 @@ from my_exception import MyException
 def main():
     bd = Database()
     try:
-        #bd.create('a', 'b')
-        bd.create('c', 'd')
+        bd.delete('c', 'c')
     except MyException as e:
         print(e)
 
