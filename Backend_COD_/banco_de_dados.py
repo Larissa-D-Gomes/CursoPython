@@ -17,7 +17,9 @@ class Database:
         if gamertag in self.dados:
             raise MyException(PLAYER_ALREADY_REGISTERED)
         self.dados[gamertag] = Player(gamertag, password)
-        print(self.salvar_dados())
+        self.salvar_dados()
+        print('Conta criada com sucesso!')
+        return True
 
     def read(self, gamertag, password):
         if gamertag == '':
@@ -122,7 +124,6 @@ class Database:
             with open('players.pkl', 'wb') as file:
                 pickle.dump(self.dados, file, pickle.HIGHEST_PROTOCOL)
 
-            print('Dados salvos com sucesso!')
             retorno = True
 
         except FileNotFoundError:
