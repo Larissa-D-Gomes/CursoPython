@@ -25,8 +25,7 @@ class Game:
             acao = input('\nINSIRA A ACAO: ')
 
             if acao == '1':
-                #self.login
-                print('Login')
+                self.login()
             elif acao == '2':
                 self.create_player_account()
             elif acao == '3':
@@ -41,6 +40,8 @@ class Game:
                 print('OPCAO INVALIDA.')
 
             #self.db.print_dados()
+            for i in online_players:
+                print(i)
 
     def create_player_account(self):
         aux = False
@@ -92,5 +93,13 @@ class Game:
             except MyException as e:
                 print(e)
 
+    def login(self):
+        try:
+            gamertag = input('\nDigite a Gamertag: ')
+            password = input('Digite a senha: ')
+            p = self.db.read(gamertag, password)
+            self.online_players.append(p)
+        except MyException as e:
+            print(e)
 
 
